@@ -1,0 +1,1050 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0257136279D99B3BC607B44F /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2753BAB727B6F9A09090A8AD /* ProfileSettingsView.swift */; };
+		0426BA77DB0655E177267CD0 /* DropShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BB76F7CE562C1C8425D6 /* DropShape.swift */; };
+		07375075565B7CEAE04A88A0 /* HydrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE40A45F8C1F054524FAE9A /* HydrationViewModel.swift */; };
+		0BF16D40B7B80D428576A027 /* DrinklyWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 302CB4ADD73F8C1F7DD67B98 /* DrinklyWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A286D0B0C8A8B362AFF3DCD /* DrinklyWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B5DFEB8DF3E4D1BD063A0 /* DrinklyWidgets.swift */; };
+		1EFA3443727F845026FFA8CE /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652D652F3203073E1943413 /* Buttons.swift */; };
+		20E0409ED50A7F7C75B25AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495B74EF76ADA8C722D07099 /* Assets.xcassets */; };
+		213394BCBD2D8CE290CFE4A4 /* AddDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21537DA508BC6E45BA6B4943 /* AddDrinkView.swift */; };
+		2239F980FF74019121B65346 /* AnimatedNumberText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF656A305C9E9D27F888D7AD /* AnimatedNumberText.swift */; };
+		251C35993E1F7A8BB11C0DC0 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C108E512DAE64F97B190B /* AppGroup.swift */; };
+		2B6C468BA93B36656EB75CCE /* DrinklyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7CE8310819797B2C6C7A0FE3 /* DrinklyCore */; };
+		33160FC5FE1A78D5ECE3A426 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755B384E68A02C3CDCD336B /* AppEnvironment.swift */; };
+		361A27EAA959063EB56CFE53 /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D704C900BA5CA52B8E00C70 /* QuickAddView.swift */; };
+		3645AE8F8DD6DFB8ADFD99ED /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B516638998E61CA3ACCA34B0 /* HistoryViewModel.swift */; };
+		46E57228AC67428A2F88E6C3 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E7F2C4D9C3B1944749290 /* HistoryView.swift */; };
+		4CE8A95BB1360D36882E9FA2 /* DataSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC50D9CB74726457E1D4103C /* DataSettingsView.swift */; };
+		4D31232EBB02009E8010B382 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77921EC0D768984A579F9A /* MonthView.swift */; };
+		4F92C187F9AE7DEEB56DD5F7 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAF286092187288F744B546 /* DashboardView.swift */; };
+		546FCD6DD995B15A4B6B3DFF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5560C9C4CBDB5987C8F0435 /* OnboardingView.swift */; };
+		5D2E9291660970B5BBF9B5CB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40C424DB07AC853338CCD08 /* WidgetKit.framework */; };
+		5D7697D7E9C4DE83BA6F0E32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D87A53A84048E898B78D55 /* SettingsView.swift */; };
+		629406CEE446684C3E7FAD0F /* DayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97C7C0F1489D802AFE26CD /* DayListView.swift */; };
+		6932FE9BCA77F89E2B0D6724 /* DrinklyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA8B950F51D9D114862FF7F /* DrinklyUITests.swift */; };
+		737D2B9EE3E511D3B51684BD /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4FB1AFF4D241F969844CC /* HealthKitService.swift */; };
+		75E130FA481F276528D85438 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5770401E422EB8E31A913D2 /* ProgressBar.swift */; };
+		7B6E3B9274B2A7B19308527D /* DrinklyCore in Frameworks */ = {isa = PBXBuildFile; productRef = B8816DFC2AB16C327F1747A7 /* DrinklyCore */; };
+		8A57CB12969F30A5890BA566 /* BeverageType+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35642E8FEC79211129B20976 /* BeverageType+UI.swift */; };
+		8A919FD15B842469C2260749 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B4FF7840FCE1F5F045F530 /* Theme.swift */; };
+		8B11945EFC7977B58C123AC4 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA307C16E5586010CC9E6C7 /* AvatarView.swift */; };
+		9CE0ADF574BDB3764C86EFCD /* ComplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6D41D7C00FEAC921B81B /* ComplicationService.swift */; };
+		9ED82971C5069E4CEEA321DE /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2199FCFBFA2D95898BED2E /* RootView.swift */; };
+		9F0FD95308AE0BDD389980EB /* VolumeCrownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C9503D9F2E72AC117BF7 /* VolumeCrownPicker.swift */; };
+		A21910F9FA245C2B44F8EE46 /* WeekChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D3E3E77495AD95C6839C80 /* WeekChartView.swift */; };
+		A435DAB2643E03E36FFC88C1 /* DrinkIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2DABDDABCFAD70574FB1C /* DrinkIntents.swift */; };
+		A57C9F7D9830503B38C63944 /* RecordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B868B612BA24E01D7669F /* RecordRow.swift */; };
+		AAF7297132FD8206D6F040AC /* DropShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BB76F7CE562C1C8425D6 /* DropShape.swift */; };
+		ACE5D60A23F70A6C4984F200 /* DayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AC3E0B11D153D46716FA8 /* DayDetailView.swift */; };
+		B696C8FBE92D398031DD5BCF /* NumberWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A69FF27D6026E47BF2A03 /* NumberWheelPicker.swift */; };
+		B9E3F7DDA0DBDC82907D17A6 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC62D60258FF59D76CBB51F /* OnboardingViewModel.swift */; };
+		B9FFEA1FA826E9AC00FE881F /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB88D7867DFCCAB74CFF9C0 /* NotificationSettingsView.swift */; };
+		BAD417301B56060AA3B0FA40 /* HealthSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB87B49BF5494BE0D8343B7D /* HealthSettingsView.swift */; };
+		BB0D12DD8341D3371574D29F /* HydrationSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3D51F7E70FA9560DBE10F /* HydrationSnapshot.swift */; };
+		BF5ACD4F5ADB86B135555A2F /* HydrationWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02572D1FB0025CE1F8D818CA /* HydrationWidgetView.swift */; };
+		C0791293A1B7B37426A84A83 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD95F1CAF56EDD5CEE59791F /* SwiftUI.framework */; };
+		C14ADB7BA8810A2B90D97F94 /* GoalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F18AF1D98F8FA6303CF78 /* GoalSettingsView.swift */; };
+		CEA3BBDEEE6D66126CF24ABA /* TodayRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF412300138D394ACC9F157 /* TodayRecordsView.swift */; };
+		D30B2080E499E73EC37B9A24 /* DrinklyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D00C3E18F8D2AB8956CEA /* DrinklyApp.swift */; };
+		D57D70A6276D7ECAB90D1AE7 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C108E512DAE64F97B190B /* AppGroup.swift */; };
+		D84068C4F6E673A3AF04A457 /* ProgressSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE38235FC7101F62D5A97A6 /* ProgressSummaryView.swift */; };
+		D8F505DFC1A14101A70909F9 /* AvatarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DDEC059AE45058143A2E /* AvatarShape.swift */; };
+		E82805C7B94CE8E930F3FEF8 /* QuickAmountsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020DCA64C570B65CA8AA3A1 /* QuickAmountsSettingsView.swift */; };
+		E912606F19E668B5AA5AAB91 /* HydrationSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3D51F7E70FA9560DBE10F /* HydrationSnapshot.swift */; };
+		EB04CC3E2E537C8463A4D184 /* EditRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99B28377E890ED43FB81D9F /* EditRecordView.swift */; };
+		FB2CDF4246BC7DA880006981 /* HydrationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FD557E523BD137C5922F8C /* HydrationViewModelTests.swift */; };
+		FE25CF623D202640A80E030F /* DrinklyCore in Frameworks */ = {isa = PBXBuildFile; productRef = CDCA34A43A17CC6D3C785BC2 /* DrinklyCore */; };
+		FF77A18E2EBE317BA226E36B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60819BDFBBFB74BAF75B7C28 /* NotificationService.swift */; };
+		FF8CE4A85FAEA2FB6F6D418A /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5B735B6D943F8F0C8F5589 /* ComplicationController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		323B468C97E0F4BCFF6EB844 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 044A8F477DEA742D877EE3BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E06CC210A807C8421B21595F;
+			remoteInfo = DrinklyWatch;
+		};
+		65A5CD0DEB5C6ED2BC1C4ECB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 044A8F477DEA742D877EE3BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E06CC210A807C8421B21595F;
+			remoteInfo = DrinklyWatch;
+		};
+		C7859B67666675359BF8A2F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 044A8F477DEA742D877EE3BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20F7EF98EFA32D402AC766E2;
+			remoteInfo = DrinklyWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CB9C8FC7AADD9098BE8D81D7 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0BF16D40B7B80D428576A027 /* DrinklyWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		02572D1FB0025CE1F8D818CA /* HydrationWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationWidgetView.swift; sourceTree = "<group>"; };
+		12D87A53A84048E898B78D55 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1BD3D51F7E70FA9560DBE10F /* HydrationSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationSnapshot.swift; sourceTree = "<group>"; };
+		1E7A69FF27D6026E47BF2A03 /* NumberWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberWheelPicker.swift; sourceTree = "<group>"; };
+		21537DA508BC6E45BA6B4943 /* AddDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkView.swift; sourceTree = "<group>"; };
+		224F18AF1D98F8FA6303CF78 /* GoalSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingsView.swift; sourceTree = "<group>"; };
+		23E2DABDDABCFAD70574FB1C /* DrinkIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkIntents.swift; sourceTree = "<group>"; };
+		2753BAB727B6F9A09090A8AD /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
+		2C6B5DFEB8DF3E4D1BD063A0 /* DrinklyWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinklyWidgets.swift; sourceTree = "<group>"; };
+		2EE38235FC7101F62D5A97A6 /* ProgressSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSummaryView.swift; sourceTree = "<group>"; };
+		302CB4ADD73F8C1F7DD67B98 /* DrinklyWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DrinklyWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		35642E8FEC79211129B20976 /* BeverageType+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeverageType+UI.swift"; sourceTree = "<group>"; };
+		367AC3E0B11D153D46716FA8 /* DayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDetailView.swift; sourceTree = "<group>"; };
+		495B74EF76ADA8C722D07099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49AB6D41D7C00FEAC921B81B /* ComplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationService.swift; sourceTree = "<group>"; };
+		4A4890CDAD8A606C80587E03 /* DrinklyWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinklyWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A97C7C0F1489D802AFE26CD /* DayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListView.swift; sourceTree = "<group>"; };
+		4CF412300138D394ACC9F157 /* TodayRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecordsView.swift; sourceTree = "<group>"; };
+		4D5B735B6D943F8F0C8F5589 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		5652D652F3203073E1943413 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		59FD557E523BD137C5922F8C /* HydrationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationViewModelTests.swift; sourceTree = "<group>"; };
+		5F16F0FAFBA915551310A2EE /* DrinklyWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrinklyWatch.entitlements; sourceTree = "<group>"; };
+		60819BDFBBFB74BAF75B7C28 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		650B868B612BA24E01D7669F /* RecordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRow.swift; sourceTree = "<group>"; };
+		74A88AF1625E165D990D50C0 /* DrinklyWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrinklyWidgets.entitlements; sourceTree = "<group>"; };
+		8BA8B950F51D9D114862FF7F /* DrinklyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinklyUITests.swift; sourceTree = "<group>"; };
+		8D7C108E512DAE64F97B190B /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		96A4FB1AFF4D241F969844CC /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		9D704C900BA5CA52B8E00C70 /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
+		A09E7F2C4D9C3B1944749290 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		A5560C9C4CBDB5987C8F0435 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A5770401E422EB8E31A913D2 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		AE2199FCFBFA2D95898BED2E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		B516638998E61CA3ACCA34B0 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		B8810A527F61C01BBB311297 /* DrinklyCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DrinklyCore; path = Packages/DrinklyCore; sourceTree = SOURCE_ROOT; };
+		BCA157C17338031DA871BC9D /* DrinklyWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinklyWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00D00C3E18F8D2AB8956CEA /* DrinklyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinklyApp.swift; sourceTree = "<group>"; };
+		C7D3E3E77495AD95C6839C80 /* WeekChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekChartView.swift; sourceTree = "<group>"; };
+		CAB88D7867DFCCAB74CFF9C0 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		CC50D9CB74726457E1D4103C /* DataSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSettingsView.swift; sourceTree = "<group>"; };
+		D40C424DB07AC853338CCD08 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D755B384E68A02C3CDCD336B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		D99B28377E890ED43FB81D9F /* EditRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordView.swift; sourceTree = "<group>"; };
+		DB77921EC0D768984A579F9A /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		DB87B49BF5494BE0D8343B7D /* HealthSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSettingsView.swift; sourceTree = "<group>"; };
+		DD95F1CAF56EDD5CEE59791F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		DDF6C9503D9F2E72AC117BF7 /* VolumeCrownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeCrownPicker.swift; sourceTree = "<group>"; };
+		DF656A305C9E9D27F888D7AD /* AnimatedNumberText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedNumberText.swift; sourceTree = "<group>"; };
+		E020DCA64C570B65CA8AA3A1 /* QuickAmountsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAmountsSettingsView.swift; sourceTree = "<group>"; };
+		E287BB76F7CE562C1C8425D6 /* DropShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShape.swift; sourceTree = "<group>"; };
+		E8A2DDEC059AE45058143A2E /* AvatarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShape.swift; sourceTree = "<group>"; };
+		EBE40A45F8C1F054524FAE9A /* HydrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationViewModel.swift; sourceTree = "<group>"; };
+		ECC62D60258FF59D76CBB51F /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		EEA307C16E5586010CC9E6C7 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		F0B4FF7840FCE1F5F045F530 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F5D6FD435CCBF112087BE81E /* DrinklyWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinklyWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDAF286092187288F744B546 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9CD07C593B0E0FB01E63490A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B6E3B9274B2A7B19308527D /* DrinklyCore in Frameworks */,
+				5D2E9291660970B5BBF9B5CB /* WidgetKit.framework in Frameworks */,
+				C0791293A1B7B37426A84A83 /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF460680A4B285152DDB9132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE25CF623D202640A80E030F /* DrinklyCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEF0CB3E62A411DC10785AF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B6C468BA93B36656EB75CCE /* DrinklyCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04BF1A620E8D6A5AB4421CFE /* DrinklyWatch */ = {
+			isa = PBXGroup;
+			children = (
+				ABF3B931EC2696C4AB84597F /* App */,
+				16E7468E5AC4C13B12635A46 /* Complications */,
+				EA297D867C6C26A58F623DF5 /* Intents */,
+				0C3C9D70CBA6E1E3B922FF93 /* Resources */,
+				4FB367CF9B0CFE51BC7716E3 /* Services */,
+				2EBA48538A7873083DC63F07 /* ViewModels */,
+				4A29F4D41F8ABC7BE6806524 /* Views */,
+			);
+			path = DrinklyWatch;
+			sourceTree = "<group>";
+		};
+		0C3C9D70CBA6E1E3B922FF93 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				495B74EF76ADA8C722D07099 /* Assets.xcassets */,
+				5F16F0FAFBA915551310A2EE /* DrinklyWatch.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		16E7468E5AC4C13B12635A46 /* Complications */ = {
+			isa = PBXGroup;
+			children = (
+				4D5B735B6D943F8F0C8F5589 /* ComplicationController.swift */,
+			);
+			path = Complications;
+			sourceTree = "<group>";
+		};
+		2264D83EC95475F40E9236DA /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				FDAF286092187288F744B546 /* DashboardView.swift */,
+				2EE38235FC7101F62D5A97A6 /* ProgressSummaryView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		24E412C05FD5BA8FBC321B46 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				B8810A527F61C01BBB311297 /* DrinklyCore */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		2EBA48538A7873083DC63F07 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B516638998E61CA3ACCA34B0 /* HistoryViewModel.swift */,
+				EBE40A45F8C1F054524FAE9A /* HydrationViewModel.swift */,
+				ECC62D60258FF59D76CBB51F /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2F38718FCC0E7462A20CDA70 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DF656A305C9E9D27F888D7AD /* AnimatedNumberText.swift */,
+				35642E8FEC79211129B20976 /* BeverageType+UI.swift */,
+				5652D652F3203073E1943413 /* Buttons.swift */,
+				1E7A69FF27D6026E47BF2A03 /* NumberWheelPicker.swift */,
+				A5770401E422EB8E31A913D2 /* ProgressBar.swift */,
+				F0B4FF7840FCE1F5F045F530 /* Theme.swift */,
+				DDF6C9503D9F2E72AC117BF7 /* VolumeCrownPicker.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3580941D5481D0A475210540 /* DrinklyWatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				59FD557E523BD137C5922F8C /* HydrationViewModelTests.swift */,
+			);
+			path = DrinklyWatchTests;
+			sourceTree = "<group>";
+		};
+		4A29F4D41F8ABC7BE6806524 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DFE1FAD67F5551B0B3705FAF /* AddDrink */,
+				FCFD69224B26AAD0C4DAD52E /* Avatar */,
+				2F38718FCC0E7462A20CDA70 /* Components */,
+				2264D83EC95475F40E9236DA /* Dashboard */,
+				851F1D4E3FBBF2A2BA83B7EA /* History */,
+				FFBE88C48F5DE39E9AE48DF6 /* Onboarding */,
+				582233B4B998E5C2F51B1992 /* Settings */,
+				71DAA761CA1DEF6938672C17 /* Today */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4FB367CF9B0CFE51BC7716E3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				49AB6D41D7C00FEAC921B81B /* ComplicationService.swift */,
+				96A4FB1AFF4D241F969844CC /* HealthKitService.swift */,
+				60819BDFBBFB74BAF75B7C28 /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		522A89F0270E59E83CA192A0 = {
+			isa = PBXGroup;
+			children = (
+				04BF1A620E8D6A5AB4421CFE /* DrinklyWatch */,
+				3580941D5481D0A475210540 /* DrinklyWatchTests */,
+				C32158CEBA5303F3229D0212 /* DrinklyWatchUITests */,
+				BC016B120B192F6A10C735DF /* DrinklyWidgets */,
+				24E412C05FD5BA8FBC321B46 /* Packages */,
+				801C61C5AEA3C41EDE007416 /* Shared */,
+				BF1D1A82B8EC7A9601A0502D /* Frameworks */,
+				D37225E01A2860B61668BDBF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		582233B4B998E5C2F51B1992 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CC50D9CB74726457E1D4103C /* DataSettingsView.swift */,
+				224F18AF1D98F8FA6303CF78 /* GoalSettingsView.swift */,
+				DB87B49BF5494BE0D8343B7D /* HealthSettingsView.swift */,
+				CAB88D7867DFCCAB74CFF9C0 /* NotificationSettingsView.swift */,
+				2753BAB727B6F9A09090A8AD /* ProfileSettingsView.swift */,
+				E020DCA64C570B65CA8AA3A1 /* QuickAmountsSettingsView.swift */,
+				12D87A53A84048E898B78D55 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		71DAA761CA1DEF6938672C17 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				D99B28377E890ED43FB81D9F /* EditRecordView.swift */,
+				650B868B612BA24E01D7669F /* RecordRow.swift */,
+				4CF412300138D394ACC9F157 /* TodayRecordsView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		801C61C5AEA3C41EDE007416 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8D7C108E512DAE64F97B190B /* AppGroup.swift */,
+				E287BB76F7CE562C1C8425D6 /* DropShape.swift */,
+				1BD3D51F7E70FA9560DBE10F /* HydrationSnapshot.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		851F1D4E3FBBF2A2BA83B7EA /* History */ = {
+			isa = PBXGroup;
+			children = (
+				367AC3E0B11D153D46716FA8 /* DayDetailView.swift */,
+				4A97C7C0F1489D802AFE26CD /* DayListView.swift */,
+				A09E7F2C4D9C3B1944749290 /* HistoryView.swift */,
+				DB77921EC0D768984A579F9A /* MonthView.swift */,
+				C7D3E3E77495AD95C6839C80 /* WeekChartView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		ABF3B931EC2696C4AB84597F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D755B384E68A02C3CDCD336B /* AppEnvironment.swift */,
+				C00D00C3E18F8D2AB8956CEA /* DrinklyApp.swift */,
+				AE2199FCFBFA2D95898BED2E /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BC016B120B192F6A10C735DF /* DrinklyWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				74A88AF1625E165D990D50C0 /* DrinklyWidgets.entitlements */,
+				2C6B5DFEB8DF3E4D1BD063A0 /* DrinklyWidgets.swift */,
+				02572D1FB0025CE1F8D818CA /* HydrationWidgetView.swift */,
+			);
+			path = DrinklyWidgets;
+			sourceTree = "<group>";
+		};
+		BF1D1A82B8EC7A9601A0502D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD95F1CAF56EDD5CEE59791F /* SwiftUI.framework */,
+				D40C424DB07AC853338CCD08 /* WidgetKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C32158CEBA5303F3229D0212 /* DrinklyWatchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8BA8B950F51D9D114862FF7F /* DrinklyUITests.swift */,
+			);
+			path = DrinklyWatchUITests;
+			sourceTree = "<group>";
+		};
+		D37225E01A2860B61668BDBF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A4890CDAD8A606C80587E03 /* DrinklyWatch.app */,
+				BCA157C17338031DA871BC9D /* DrinklyWatchTests.xctest */,
+				F5D6FD435CCBF112087BE81E /* DrinklyWatchUITests.xctest */,
+				302CB4ADD73F8C1F7DD67B98 /* DrinklyWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DFE1FAD67F5551B0B3705FAF /* AddDrink */ = {
+			isa = PBXGroup;
+			children = (
+				21537DA508BC6E45BA6B4943 /* AddDrinkView.swift */,
+				9D704C900BA5CA52B8E00C70 /* QuickAddView.swift */,
+			);
+			path = AddDrink;
+			sourceTree = "<group>";
+		};
+		EA297D867C6C26A58F623DF5 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				23E2DABDDABCFAD70574FB1C /* DrinkIntents.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		FCFD69224B26AAD0C4DAD52E /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				E8A2DDEC059AE45058143A2E /* AvatarShape.swift */,
+				EEA307C16E5586010CC9E6C7 /* AvatarView.swift */,
+			);
+			path = Avatar;
+			sourceTree = "<group>";
+		};
+		FFBE88C48F5DE39E9AE48DF6 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A5560C9C4CBDB5987C8F0435 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20F7EF98EFA32D402AC766E2 /* DrinklyWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AC383A950D5EFFBF0681E20 /* Build configuration list for PBXNativeTarget "DrinklyWidgets" */;
+			buildPhases = (
+				C1E4367E089FC3E385F2D4A4 /* Sources */,
+				9CD07C593B0E0FB01E63490A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrinklyWidgets;
+			packageProductDependencies = (
+				B8816DFC2AB16C327F1747A7 /* DrinklyCore */,
+			);
+			productName = DrinklyWidgets;
+			productReference = 302CB4ADD73F8C1F7DD67B98 /* DrinklyWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		755C96038663814B8F9CC2F0 /* DrinklyWatchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 037A3363B38E8301C667E4C1 /* Build configuration list for PBXNativeTarget "DrinklyWatchUITests" */;
+			buildPhases = (
+				B3D410C41DA69A95E214B7C4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0819418AD191806A4976CBEB /* PBXTargetDependency */,
+			);
+			name = DrinklyWatchUITests;
+			packageProductDependencies = (
+			);
+			productName = DrinklyWatchUITests;
+			productReference = F5D6FD435CCBF112087BE81E /* DrinklyWatchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		E06CC210A807C8421B21595F /* DrinklyWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8FF7AAC8D6F51D69F1A00F0 /* Build configuration list for PBXNativeTarget "DrinklyWatch" */;
+			buildPhases = (
+				C2648E11ED5BBD951B3F4E53 /* Sources */,
+				2A09C977502C6A33B883272C /* Resources */,
+				AF460680A4B285152DDB9132 /* Frameworks */,
+				CB9C8FC7AADD9098BE8D81D7 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECE513D4C1FFA20501F77998 /* PBXTargetDependency */,
+			);
+			name = DrinklyWatch;
+			packageProductDependencies = (
+				CDCA34A43A17CC6D3C785BC2 /* DrinklyCore */,
+			);
+			productName = DrinklyWatch;
+			productReference = 4A4890CDAD8A606C80587E03 /* DrinklyWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E239CDF18A08800769CD277B /* DrinklyWatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4FD6CD512F6DBA2FB99D7B1 /* Build configuration list for PBXNativeTarget "DrinklyWatchTests" */;
+			buildPhases = (
+				38AE40DC27D6B76DF448E92E /* Sources */,
+				DEF0CB3E62A411DC10785AF8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				038A5B2B5915A2DB52F9417B /* PBXTargetDependency */,
+			);
+			name = DrinklyWatchTests;
+			packageProductDependencies = (
+				7CE8310819797B2C6C7A0FE3 /* DrinklyCore */,
+			);
+			productName = DrinklyWatchTests;
+			productReference = BCA157C17338031DA871BC9D /* DrinklyWatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		044A8F477DEA742D877EE3BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					20F7EF98EFA32D402AC766E2 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					755C96038663814B8F9CC2F0 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = E06CC210A807C8421B21595F;
+					};
+					E06CC210A807C8421B21595F = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					E239CDF18A08800769CD277B = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A45F178D51F2BB35F40FCE20 /* Build configuration list for PBXProject "Drinkly" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "pt-BR";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				"pt-BR",
+			);
+			mainGroup = 522A89F0270E59E83CA192A0;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BA2DB04DB651EE29B38A1303 /* XCLocalSwiftPackageReference "Packages/DrinklyCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E06CC210A807C8421B21595F /* DrinklyWatch */,
+				E239CDF18A08800769CD277B /* DrinklyWatchTests */,
+				755C96038663814B8F9CC2F0 /* DrinklyWatchUITests */,
+				20F7EF98EFA32D402AC766E2 /* DrinklyWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A09C977502C6A33B883272C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20E0409ED50A7F7C75B25AA4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38AE40DC27D6B76DF448E92E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB2CDF4246BC7DA880006981 /* HydrationViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3D410C41DA69A95E214B7C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6932FE9BCA77F89E2B0D6724 /* DrinklyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1E4367E089FC3E385F2D4A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D57D70A6276D7ECAB90D1AE7 /* AppGroup.swift in Sources */,
+				1A286D0B0C8A8B362AFF3DCD /* DrinklyWidgets.swift in Sources */,
+				0426BA77DB0655E177267CD0 /* DropShape.swift in Sources */,
+				BB0D12DD8341D3371574D29F /* HydrationSnapshot.swift in Sources */,
+				BF5ACD4F5ADB86B135555A2F /* HydrationWidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2648E11ED5BBD951B3F4E53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				213394BCBD2D8CE290CFE4A4 /* AddDrinkView.swift in Sources */,
+				2239F980FF74019121B65346 /* AnimatedNumberText.swift in Sources */,
+				33160FC5FE1A78D5ECE3A426 /* AppEnvironment.swift in Sources */,
+				251C35993E1F7A8BB11C0DC0 /* AppGroup.swift in Sources */,
+				D8F505DFC1A14101A70909F9 /* AvatarShape.swift in Sources */,
+				8B11945EFC7977B58C123AC4 /* AvatarView.swift in Sources */,
+				8A57CB12969F30A5890BA566 /* BeverageType+UI.swift in Sources */,
+				1EFA3443727F845026FFA8CE /* Buttons.swift in Sources */,
+				FF8CE4A85FAEA2FB6F6D418A /* ComplicationController.swift in Sources */,
+				9CE0ADF574BDB3764C86EFCD /* ComplicationService.swift in Sources */,
+				4F92C187F9AE7DEEB56DD5F7 /* DashboardView.swift in Sources */,
+				4CE8A95BB1360D36882E9FA2 /* DataSettingsView.swift in Sources */,
+				ACE5D60A23F70A6C4984F200 /* DayDetailView.swift in Sources */,
+				629406CEE446684C3E7FAD0F /* DayListView.swift in Sources */,
+				A435DAB2643E03E36FFC88C1 /* DrinkIntents.swift in Sources */,
+				D30B2080E499E73EC37B9A24 /* DrinklyApp.swift in Sources */,
+				AAF7297132FD8206D6F040AC /* DropShape.swift in Sources */,
+				EB04CC3E2E537C8463A4D184 /* EditRecordView.swift in Sources */,
+				C14ADB7BA8810A2B90D97F94 /* GoalSettingsView.swift in Sources */,
+				737D2B9EE3E511D3B51684BD /* HealthKitService.swift in Sources */,
+				BAD417301B56060AA3B0FA40 /* HealthSettingsView.swift in Sources */,
+				46E57228AC67428A2F88E6C3 /* HistoryView.swift in Sources */,
+				3645AE8F8DD6DFB8ADFD99ED /* HistoryViewModel.swift in Sources */,
+				E912606F19E668B5AA5AAB91 /* HydrationSnapshot.swift in Sources */,
+				07375075565B7CEAE04A88A0 /* HydrationViewModel.swift in Sources */,
+				4D31232EBB02009E8010B382 /* MonthView.swift in Sources */,
+				FF77A18E2EBE317BA226E36B /* NotificationService.swift in Sources */,
+				B9FFEA1FA826E9AC00FE881F /* NotificationSettingsView.swift in Sources */,
+				B696C8FBE92D398031DD5BCF /* NumberWheelPicker.swift in Sources */,
+				546FCD6DD995B15A4B6B3DFF /* OnboardingView.swift in Sources */,
+				B9E3F7DDA0DBDC82907D17A6 /* OnboardingViewModel.swift in Sources */,
+				0257136279D99B3BC607B44F /* ProfileSettingsView.swift in Sources */,
+				75E130FA481F276528D85438 /* ProgressBar.swift in Sources */,
+				D84068C4F6E673A3AF04A457 /* ProgressSummaryView.swift in Sources */,
+				361A27EAA959063EB56CFE53 /* QuickAddView.swift in Sources */,
+				E82805C7B94CE8E930F3FEF8 /* QuickAmountsSettingsView.swift in Sources */,
+				A57C9F7D9830503B38C63944 /* RecordRow.swift in Sources */,
+				9ED82971C5069E4CEEA321DE /* RootView.swift in Sources */,
+				5D7697D7E9C4DE83BA6F0E32 /* SettingsView.swift in Sources */,
+				8A919FD15B842469C2260749 /* Theme.swift in Sources */,
+				CEA3BBDEEE6D66126CF24ABA /* TodayRecordsView.swift in Sources */,
+				9F0FD95308AE0BDD389980EB /* VolumeCrownPicker.swift in Sources */,
+				A21910F9FA245C2B44F8EE46 /* WeekChartView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		038A5B2B5915A2DB52F9417B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E06CC210A807C8421B21595F /* DrinklyWatch */;
+			targetProxy = 323B468C97E0F4BCFF6EB844 /* PBXContainerItemProxy */;
+		};
+		0819418AD191806A4976CBEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E06CC210A807C8421B21595F /* DrinklyWatch */;
+			targetProxy = 65A5CD0DEB5C6ED2BC1C4ECB /* PBXContainerItemProxy */;
+		};
+		ECE513D4C1FFA20501F77998 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20F7EF98EFA32D402AC766E2 /* DrinklyWidgets */;
+			targetProxy = C7859B67666675359BF8A2F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		16FC1D6B55B3D71BD0732FF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.uitests";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = DrinklyWatch;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		5032C714BD15D96F36348676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_GROUP_IDENTIFIER = "group.$(BUNDLE_ID_PREFIX).hydration";
+				BUNDLE_ID_PREFIX = com.drinkly;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		5637C7FE683C010B14BB109E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrinklyWatch/Resources/DrinklyWatch.entitlements;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DrinklyWatch/Resources/Info.plist;
+				OTHER_LDFLAGS = "$(inherited) -weak_framework WidgetKit -weak_framework AppIntents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.watchkitapp";
+				PRODUCT_MODULE_NAME = Drinkly;
+				PRODUCT_NAME = Drinkly;
+				SDKROOT = watchos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		66998D9E7E9257F192FC1B6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.uitests";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = DrinklyWatch;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		6BC7B71B40BAC15932893E19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = DrinklyWidgets/DrinklyWidgets.entitlements;
+				INFOPLIST_FILE = DrinklyWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.watchkitapp.widgets";
+				PRODUCT_NAME = DrinklyWidgets;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		7AF721EA9475AEABF28BB845 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrinklyWatch/Resources/DrinklyWatch.entitlements;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DrinklyWatch/Resources/Info.plist;
+				OTHER_LDFLAGS = "$(inherited) -weak_framework WidgetKit -weak_framework AppIntents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.watchkitapp";
+				PRODUCT_MODULE_NAME = Drinkly;
+				PRODUCT_NAME = Drinkly;
+				SDKROOT = watchos;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		872CAD09BFA7812F1CB4990F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = DrinklyWidgets/DrinklyWidgets.entitlements;
+				INFOPLIST_FILE = DrinklyWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.watchkitapp.widgets";
+				PRODUCT_NAME = DrinklyWidgets;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		9B93D9870F02622DE28B7A7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_GROUP_IDENTIFIER = "group.$(BUNDLE_ID_PREFIX).hydration";
+				BUNDLE_ID_PREFIX = com.drinkly;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		A9441823869CE6FB94E8CC21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.tests";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Drinkly.app/Drinkly";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		A9603DE8056D0F0D604CF5E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).hydration.tests";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Drinkly.app/Drinkly";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		037A3363B38E8301C667E4C1 /* Build configuration list for PBXNativeTarget "DrinklyWatchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66998D9E7E9257F192FC1B6F /* Debug */,
+				16FC1D6B55B3D71BD0732FF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4AC383A950D5EFFBF0681E20 /* Build configuration list for PBXNativeTarget "DrinklyWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BC7B71B40BAC15932893E19 /* Debug */,
+				872CAD09BFA7812F1CB4990F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A45F178D51F2BB35F40FCE20 /* Build configuration list for PBXProject "Drinkly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B93D9870F02622DE28B7A7D /* Debug */,
+				5032C714BD15D96F36348676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B4FD6CD512F6DBA2FB99D7B1 /* Build configuration list for PBXNativeTarget "DrinklyWatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9441823869CE6FB94E8CC21 /* Debug */,
+				A9603DE8056D0F0D604CF5E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E8FF7AAC8D6F51D69F1A00F0 /* Build configuration list for PBXNativeTarget "DrinklyWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5637C7FE683C010B14BB109E /* Debug */,
+				7AF721EA9475AEABF28BB845 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BA2DB04DB651EE29B38A1303 /* XCLocalSwiftPackageReference "Packages/DrinklyCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/DrinklyCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7CE8310819797B2C6C7A0FE3 /* DrinklyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DrinklyCore;
+		};
+		B8816DFC2AB16C327F1747A7 /* DrinklyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DrinklyCore;
+		};
+		CDCA34A43A17CC6D3C785BC2 /* DrinklyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DrinklyCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 044A8F477DEA742D877EE3BC /* Project object */;
+}

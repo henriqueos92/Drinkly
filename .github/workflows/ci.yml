@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  core-tests:
+    name: DrinklyCore (swift test, Linux)
+    runs-on: ubuntu-latest
+    container: swift:6.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run business-rule tests
+        working-directory: Packages/DrinklyCore
+        run: swift test
+
+  watch-app:
+    name: watchOS app (xcodebuild)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Xcode
+        run: xcodebuild -version && xcrun simctl list runtimes | grep -i watch || true
+      - name: Build app + widget extension (watchOS Simulator)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Drinkly.xcodeproj \
+            -scheme Drinkly \
+            -destination 'generic/platform=watchOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO | tee build.log | grep -E "error:|warning:|BUILD" || true
+          grep -q "BUILD SUCCEEDED" build.log
+      - name: Build for testing
+        run: |
+          set -o pipefail
+          xcodebuild build-for-testing \
+            -project Drinkly.xcodeproj \
+            -scheme Drinkly \
+            -destination 'generic/platform=watchOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO | tee build-tests.log | grep -E "error:|BUILD" || true
+          grep -q "TEST BUILD SUCCEEDED" build-tests.log
+      - name: Unit tests on a watch simulator
+        run: |
+          set -o pipefail
+          DEVICE=$(xcrun simctl list devices available | grep -E "Apple Watch" | head -1 | sed -E 's/^ *(.*) \(([0-9A-F-]{36})\).*/\2/')
+          echo "Simulator: $DEVICE"
+          test -n "$DEVICE"
+          xcodebuild test \
+            -project Drinkly.xcodeproj \
+            -scheme Drinkly \
+            -destination "id=$DEVICE" \
+            -only-testing:DrinklyWatchTests \
+            -only-testing:DrinklyCoreTests \
+            CODE_SIGNING_ALLOWED=NO | tee test.log | grep -E "error:|Test Case|Executed|TEST" || true
+          grep -q "TEST SUCCEEDED" test.log

@@ -1,0 +1,149 @@
+# Projeto Xcode gerado com XcodeGen (https://github.com/yonaskolb/XcodeGen).
+# O Drinkly.xcodeproj já está versionado; regenere com `xcodegen generate`
+# somente se alterar este arquivo.
+name: Drinkly
+
+options:
+  bundleIdPrefix: com.drinkly
+  developmentLanguage: pt-BR
+  createIntermediateGroups: true
+  groupSortPosition: top
+  deploymentTarget:
+    watchOS: "8.0"
+
+settings:
+  base:
+    # Altere estes dois valores para a sua conta Apple Developer.
+    BUNDLE_ID_PREFIX: com.drinkly
+    DEVELOPMENT_TEAM: ""
+    APP_GROUP_IDENTIFIER: group.$(BUNDLE_ID_PREFIX).hydration
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+packages:
+  DrinklyCore:
+    path: Packages/DrinklyCore
+
+targets:
+  DrinklyWatch:
+    type: application
+    platform: watchOS
+    deploymentTarget: "8.0"
+    sources:
+      - path: DrinklyWatch
+        excludes:
+          - "Resources/Info.plist"
+      - path: Shared
+    dependencies:
+      - package: DrinklyCore
+      - target: DrinklyWidgets
+        embed: true
+        codeSign: true
+    settings:
+      base:
+        PRODUCT_NAME: Drinkly
+        PRODUCT_MODULE_NAME: Drinkly
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).hydration.watchkitapp
+        INFOPLIST_FILE: DrinklyWatch/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: DrinklyWatch/Resources/DrinklyWatch.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        TARGETED_DEVICE_FAMILY: "4"
+        SDKROOT: watchos
+        SKIP_INSTALL: NO
+        ENABLE_PREVIEWS: YES
+        # WidgetKit e AppIntents só existem a partir do watchOS 9: link fraco
+        # para o app continuar abrindo no watchOS 8 (Apple Watch Series 3).
+        OTHER_LDFLAGS: "$(inherited) -weak_framework WidgetKit -weak_framework AppIntents"
+
+  DrinklyWidgets:
+    type: app-extension
+    platform: watchOS
+    # WidgetKit no watchOS exige 9.0+. No watchOS 8 a extensão é ignorada e
+    # as complicações vêm do ClockKit (ComplicationController no app).
+    deploymentTarget: "9.0"
+    sources:
+      - path: DrinklyWidgets
+        excludes:
+          - "Info.plist"
+      - path: Shared
+    dependencies:
+      - package: DrinklyCore
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+    settings:
+      base:
+        PRODUCT_NAME: DrinklyWidgets
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).hydration.watchkitapp.widgets
+        INFOPLIST_FILE: DrinklyWidgets/Info.plist
+        CODE_SIGN_ENTITLEMENTS: DrinklyWidgets/DrinklyWidgets.entitlements
+        TARGETED_DEVICE_FAMILY: "4"
+        SDKROOT: watchos
+        SKIP_INSTALL: YES
+        APPLICATION_EXTENSION_API_ONLY: YES
+
+  DrinklyWatchTests:
+    type: bundle.unit-test
+    platform: watchOS
+    deploymentTarget: "8.0"
+    sources:
+      - path: DrinklyWatchTests
+    dependencies:
+      - target: DrinklyWatch
+      - package: DrinklyCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).hydration.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Drinkly.app/Drinkly
+        BUNDLE_LOADER: $(TEST_HOST)
+
+  DrinklyWatchUITests:
+    type: bundle.ui-testing
+    platform: watchOS
+    deploymentTarget: "8.0"
+    sources:
+      - path: DrinklyWatchUITests
+    dependencies:
+      - target: DrinklyWatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).hydration.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: DrinklyWatch
+
+schemes:
+  Drinkly:
+    build:
+      targets:
+        DrinklyWatch: all
+        DrinklyWatchTests: [test]
+        DrinklyWatchUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - DrinklyWatchTests
+        - DrinklyWatchUITests
+        - package: DrinklyCore/DrinklyCoreTests
+    profile:
+      config: Release
+    archive:
+      config: Release
+
+  DrinklyWidgets:
+    build:
+      targets:
+        DrinklyWidgets: all
+        DrinklyWatch: all
+    run:
+      config: Debug
+      askForAppToLaunch: true
+      environmentVariables:
+        _XCWidgetKind: HydrationProgress
+        _XCWidgetFamily: accessoryRectangular
