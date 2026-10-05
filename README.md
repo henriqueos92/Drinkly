@@ -6,7 +6,7 @@ A ação principal, registrar água, leva **um toque**, seja na tela inicial, na
 - Meta diária calculada a partir do perfil (sexo, altura, peso e idade), com ajuste manual.
 - Botões rápidos (+200, +300, +500, +750 ml… configuráveis) e volumes personalizados pela Digital Crown.
 - Bebidas pré-configuradas: água, água de coco, suco, café, chá, refrigerante e outra.
-- Avatar masculino/feminino que enche de água conforme o progresso, com animação de ~0,5 s.
+- Avatar com silhueta atlética (masculina/feminina) que enche de água conforme o progresso. O nível sobe em ~0,5 s e a superfície da água balança como num copo.
 - Histórico de hoje, ontem, últimos 7 dias, semana (seg–dom) e mês, com estatísticas.
 - Lembretes inteligentes: começam só depois da primeira bebida do dia, respeitam o intervalo e a janela de horário.
 - Complicações para o mostrador (WidgetKit no watchOS 9+, ClockKit no watchOS 8) e Smart Stack (watchOS 10+).
@@ -44,8 +44,9 @@ Para atender aos três, a versão mínima tem que ser o **watchOS 8.0**. É o *d
 Os 41/45 mm têm tela maior, cantos mais arredondados e ~20–25% mais área útil que os 38/42 mm.
 O layout não usa posições fixas. A tela inicial mede a largura com `GeometryReader`:
 
-- **≥ 160 pt** (40/41/44/45/46/49 mm): avatar à esquerda e números à direita.
-- **< 160 pt** (38/42 mm do Series 3) ou Dynamic Type de acessibilidade: avatar acima e números abaixo.
+- Em todos os tamanhos: avatar fixo à esquerda (~38% da largura) e, à direita, percentual, "consumido / meta", "Faltam X ml" e os botões rápidos, que rolam com a Digital Crown.
+- Com Dynamic Type de acessibilidade: avatar acima e conteúdo abaixo, para não espremer o texto.
+- O balanço da água usa `TimelineView` a 24 fps e pausa no modo sempre ativo (pulso abaixado), fora de primeiro plano e com "Reduzir movimento".
 
 Fontes semânticas (`.title`, `.headline`…) acompanham o Dynamic Type. Textos longos usam `minimumScaleFactor`.
 O avatar e a gota são vetores (`Shape`), então escalam sem perda.

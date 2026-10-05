@@ -1,34 +1,32 @@
 import SwiftUI
 import DrinklyCore
 
-/// Tela inicial: progresso + avatar + botões de adição rápida.
-/// Registrar água leva um único toque.
+/// Tela inicial.
+///
+/// ```
+/// ┌──────────────────────────┐
+/// │        │ 32%             │
+/// │ avatar │ 1.250 / 3.950 ml│
+/// │ (fixo) │ Faltam 2.700 ml │
+/// │        │ [💧 +300 ml]    │  ← coluna rola com a Digital Crown
+/// │        │ [💧 +500 ml]    │
+/// │        │ [Outras]        │
+/// └──────────────────────────┘
+/// ```
+/// O avatar fica sempre visível à esquerda; os botões ficam à direita.
+/// Registrar água leva um único toque. Com Dynamic Type de acessibilidade, a
+/// tela empilha avatar e conteúdo para não espremer o texto.
 struct DashboardView: View {
     @EnvironmentObject private var model: HydrationViewModel
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var isAddDrinkPresented = false
 
-    /// Largura mínima (pt) para colocar o avatar à esquerda dos números.
-    /// 40/41/44/45/49 mm (≥ 162 pt) usam lado a lado; 38/42 mm (Series 3)
-    /// empilham o avatar acima.
-    private static let sideBySideMinWidth: CGFloat = 160
-
     var body: some View {
         GeometryReader { proxy in
-            ScrollView {
-                VStack(spacing: 10) {
-                    header(width: proxy.size.width)
-                    quickAddGrid
-                    Button {
-                        isAddDrinkPresented = true
-                    } label: {
-                        Label("Outras bebidas", systemImage: "cup.and.saucer.fill")
-                    }
-                    .buttonStyle(BigButtonStyle(background: Color.white.opacity(0.14)))
-                    .accessibilityIdentifier("otherDrinks")
-                    undoBar
-                }
-                .padding(.horizontal, 2)
+            if dynamicTypeSize.isAccessibilitySize {
+                stackedLayout(size: proxy.size)
+            } else {
+                sideBySideLayout(size: proxy.size)
             }
         }
         .navigationTitle("💧 Hidratação")
@@ -38,51 +36,71 @@ struct DashboardView: View {
         }
     }
 
-    // MARK: - Partes
+    // MARK: - Layouts
 
-    @ViewBuilder
-    private func header(width: CGFloat) -> some View {
-        let summary = model.today
-        let gender = model.profile?.gender ?? .male
-        let avatar = AvatarView(gender: gender, fraction: summary.progress.fraction, status: summary.status)
-        if width >= Self.sideBySideMinWidth && !dynamicTypeSize.isAccessibilitySize {
-            HStack(alignment: .center, spacing: 8) {
-                avatar
-                    .frame(width: width * 0.28)
-                    .frame(maxHeight: width * 0.56)
-                ProgressSummaryView(summary: summary, alignment: .leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-        } else {
-            VStack(spacing: 6) {
-                avatar
-                    .frame(height: min(width * 0.45, 80))
-                ProgressSummaryView(summary: summary)
-            }
-        }
-    }
+    /// Avatar fixo à esquerda (~38% da largura) e coluna rolável à direita.
+    private func sideBySideLayout(size: CGSize) -> some View {
+        HStack(alignment: .center, spacing: 6) {
+            avatar
+                .frame(width: size.width * 0.38, height: size.height)
 
-    private var quickAddGrid: some View {
-        let amounts = Array(model.quickAmounts.prefix(4))
-        return LazyVGrid(columns: [GridItem(.flexible(), spacing: 6), GridItem(.flexible(), spacing: 6)], spacing: 6) {
-            ForEach(amounts, id: \.self) { amount in
-                QuickAddButton(volumeMl: amount) {
-                    model.add(volumeMl: amount)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 6) {
+                    ProgressSummaryView(summary: model.today, alignment: .leading, compact: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 2)
+                    actions(compact: true)
                 }
             }
         }
     }
 
+    /// Avatar acima e conteúdo abaixo (tamanhos de texto de acessibilidade).
+    private func stackedLayout(size: CGSize) -> some View {
+        ScrollView {
+            VStack(spacing: 8) {
+                avatar.frame(height: min(size.width * 0.5, 90))
+                ProgressSummaryView(summary: model.today)
+                actions(compact: false)
+            }
+        }
+    }
+
+    // MARK: - Partes
+
+    private var avatar: some View {
+        AvatarView(gender: model.profile?.gender ?? .male,
+                   fraction: model.today.progress.fraction,
+                   status: model.today.status)
+    }
+
     @ViewBuilder
-    private var undoBar: some View {
+    private func actions(compact: Bool) -> some View {
+        ForEach(model.quickAmounts, id: \.self) { amount in
+            QuickAddButton(volumeMl: amount, compact: compact) {
+                model.add(volumeMl: amount)
+            }
+        }
+
+        Button {
+            isAddDrinkPresented = true
+        } label: {
+            Label("Outras", systemImage: "cup.and.saucer.fill")
+        }
+        .buttonStyle(BigButtonStyle(background: Color.white.opacity(0.14), minHeight: compact ? 36 : 44))
+        .accessibilityLabel("Outras bebidas")
+        .accessibilityIdentifier("otherDrinks")
+
         if let record = model.undoableRecord {
             Button {
                 model.undoLastAdd()
             } label: {
-                Label("Desfazer +\(record.volumeMl) ml", systemImage: "arrow.uturn.backward")
+                Label("Desfazer", systemImage: "arrow.uturn.backward")
                     .font(Theme.rounded(.footnote))
             }
-            .buttonStyle(BigButtonStyle(background: Color.white.opacity(0.08), foreground: Theme.secondaryText))
+            .buttonStyle(BigButtonStyle(background: Color.white.opacity(0.08),
+                                        foreground: Theme.secondaryText,
+                                        minHeight: compact ? 32 : 40))
             .transition(.opacity)
             .accessibilityLabel("Desfazer registro de \(record.volumeMl) mililitros")
             .accessibilityIdentifier("undo")
@@ -93,7 +111,7 @@ struct DashboardView: View {
 #if DEBUG
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        let store = InMemoryHydrationStore(profile: UserProfile(gender: .female, heightCm: 165, weightKg: 60, ageYears: 30, goalMode: .manual, manualGoalMl: 2500))
+        let store = InMemoryHydrationStore(profile: UserProfile(gender: .male, heightCm: 178, weightKg: 113, ageYears: 34))
         let service = HydrationService(store: store)
         _ = try? service.addDrink(volumeMl: 1250)
         return NavigationView { DashboardView() }

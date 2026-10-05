@@ -4,6 +4,7 @@ import SwiftUI
 struct BigButtonStyle: ButtonStyle {
     var background: Color = Theme.buttonBackground
     var foreground: Color = .white
+    var minHeight: CGFloat = 44
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -11,7 +12,7 @@ struct BigButtonStyle: ButtonStyle {
             .foregroundColor(foreground)
             .lineLimit(1)
             .minimumScaleFactor(0.7)
-            .frame(maxWidth: .infinity, minHeight: 44)
+            .frame(maxWidth: .infinity, minHeight: minHeight)
             .padding(.horizontal, 4)
             .background(
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
@@ -27,18 +28,26 @@ struct QuickAddButton: View {
     let volumeMl: Int
     var type: BeverageTypeLabel = .water
     var identifierPrefix = "quickAdd"
+    /// Versão mais baixa, com ícone de gota, para a coluna da tela inicial.
+    var compact = false
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             HStack(spacing: 2) {
+                if compact {
+                    Image(systemName: "drop.fill")
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundColor(Theme.water)
+                        .padding(.trailing, 2)
+                }
                 Text("+\(volumeMl)")
                 Text("ml")
                     .font(Theme.rounded(.footnote, weight: .medium))
                     .foregroundColor(Theme.secondaryText)
             }
         }
-        .buttonStyle(BigButtonStyle())
+        .buttonStyle(BigButtonStyle(minHeight: compact ? 36 : 44))
         .accessibilityLabel("Adicionar \(volumeMl) mililitros de \(type.spokenName)")
         .accessibilityIdentifier("\(identifierPrefix)-\(volumeMl)")
     }

@@ -5,13 +5,15 @@ import DrinklyCore
 struct ProgressSummaryView: View {
     let summary: DailySummary
     var alignment: HorizontalAlignment = .center
+    /// Versão para a coluna estreita da tela inicial (fontes menores).
+    var compact = false
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         VStack(alignment: alignment, spacing: 2) {
             AnimatedNumberText(summary.percentage) { "\($0)%" }
-                .font(Theme.rounded(.title))
+                .font(Theme.rounded(compact ? .title2 : .title, weight: .bold))
                 .foregroundColor(Theme.color(for: summary.status))
                 .accessibilityIdentifier("percentage")
 
@@ -20,7 +22,7 @@ struct ProgressSummaryView: View {
                 Text(" / \(VolumeFormatter.number(summary.goalMl)) ml")
                     .foregroundColor(Theme.secondaryText)
             }
-            .font(Theme.rounded(.headline))
+            .font(Theme.rounded(compact ? .footnote : .headline))
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("\(VolumeFormatter.spoken(ml: summary.consumedMl)) de \(VolumeFormatter.spoken(ml: summary.goalMl))")
             .accessibilityIdentifier("consumedOfGoal")
