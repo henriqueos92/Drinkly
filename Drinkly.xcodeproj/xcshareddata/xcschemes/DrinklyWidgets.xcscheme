@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1430"
-   version = "1.7">
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES"
-      runPostActionsOnFailure = "NO">
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -16,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E06CC210A807C8421B21595F"
-               BuildableName = "DrinklyWatch.app"
+               BuildableName = "Drinkly.app"
                BlueprintName = "DrinklyWatch"
                ReferencedContainer = "container:Drinkly.xcodeproj">
             </BuildableReference>
@@ -41,13 +40,12 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "NO">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E06CC210A807C8421B21595F"
-            BuildableName = "DrinklyWatch.app"
+            BuildableName = "Drinkly.app"
             BlueprintName = "DrinklyWatch"
             ReferencedContainer = "container:Drinkly.xcodeproj">
          </BuildableReference>
@@ -60,24 +58,23 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      askForAppToLaunch = "YES"
+      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E06CC210A807C8421B21595F"
-            BuildableName = "DrinklyWatch.app"
+            BuildableName = "Drinkly.app"
             BlueprintName = "DrinklyWatch"
             ReferencedContainer = "container:Drinkly.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCWidgetFamily"
@@ -102,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E06CC210A807C8421B21595F"
-            BuildableName = "DrinklyWatch.app"
+            BuildableName = "Drinkly.app"
             BlueprintName = "DrinklyWatch"
             ReferencedContainer = "container:Drinkly.xcodeproj">
          </BuildableReference>
