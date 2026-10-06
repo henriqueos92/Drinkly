@@ -26,8 +26,4 @@ extension BeverageType {
         case .other: return .gray
         }
     }
-
-    var spokenLabel: BeverageTypeLabel {
-        BeverageTypeLabel(spokenName: displayName.lowercased())
-    }
 }

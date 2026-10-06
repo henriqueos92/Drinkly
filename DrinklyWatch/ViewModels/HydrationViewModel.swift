@@ -45,7 +45,13 @@ final class HydrationViewModel: ObservableObject {
     // MARK: - Leitura
 
     var progress: HydrationProgress { today.progress }
-    var quickAmounts: [Int] { profile?.quickAmounts ?? UserProfile.defaultQuickAmounts }
+    /// Atalhos da tela inicial (água e outras bebidas), na ordem exibida.
+    var shortcuts: [DrinkShortcut] { profile?.shortcuts ?? UserProfile.defaultShortcuts }
+
+    /// Volumes oferecidos ao escolher uma bebida em "Outras bebidas".
+    var volumePresets: [Int] {
+        Array(Set([150, 200, 250, 300, 350, 500] + (profile?.quickAmounts ?? []))).sorted()
+    }
     var currentGoalMl: Int { service.currentGoalMl() }
 
     /// Recarrega do disco. Chamado ao abrir o app e na virada do dia.
@@ -67,9 +73,14 @@ final class HydrationViewModel: ObservableObject {
     // MARK: - Registro de bebidas
 
     /// Adição rápida: registra imediatamente, sem confirmação.
-    func add(volumeMl: Int, type: BeverageType = .water) {
+    /// - Parameter rememberShortcut: também guarda a bebida como atalho da
+    ///   tela inicial (usado por "Outras bebidas").
+    func add(volumeMl: Int, type: BeverageType = .water, rememberShortcut: Bool = false) {
         do {
             let record = try service.addDrink(type: type, volumeMl: volumeMl)
+            if rememberShortcut {
+                _ = try? service.rememberShortcut(DrinkShortcut(type: type, volumeMl: volumeMl))
+            }
             playHaptic(success: true)
             offerUndo(for: record)
         } catch {
@@ -82,6 +93,32 @@ final class HydrationViewModel: ObservableObject {
         guard let record = undoableRecord else { return }
         delete(record)
         clearUndo()
+    }
+
+    func add(_ shortcut: DrinkShortcut) {
+        add(volumeMl: shortcut.volumeMl, type: shortcut.type)
+    }
+
+    // MARK: - Atalhos
+
+    func removeShortcut(_ shortcut: DrinkShortcut) {
+        do {
+            try service.removeShortcut(shortcut)
+        } catch {
+            errorMessage = "Não foi possível remover o atalho."
+        }
+    }
+
+    /// Adiciona um atalho manualmente (tela "Editar atalhos").
+    /// - Returns: `false` se já existe ou se a lista está cheia.
+    @discardableResult
+    func addShortcut(_ shortcut: DrinkShortcut) -> Bool {
+        do {
+            return try service.rememberShortcut(shortcut)
+        } catch {
+            errorMessage = "Não foi possível salvar o atalho."
+            return false
+        }
     }
 
     func update(_ record: DrinkRecord) {

@@ -4,7 +4,7 @@ App nativo para Apple Watch (Swift + SwiftUI) para acompanhar a ingestão de lí
 A ação principal, registrar água, leva **um toque**, seja na tela inicial, na complicação ou pela Siri.
 
 - Meta diária calculada a partir do perfil (sexo, altura, peso e idade), com ajuste manual.
-- Botões rápidos (+200, +300, +500, +750 ml… configuráveis) e volumes personalizados pela Digital Crown.
+- Atalhos de um toque na tela inicial (+200, +300, +500, +750 ml de água por padrão). Bebidas registradas em "Outras" (ex.: água de coco 300 ml) viram atalhos automaticamente; atalhos podem ser criados e excluídos em "Editar atalhos" (até 8).
 - Bebidas pré-configuradas: água, água de coco, suco, café, chá, refrigerante e outra.
 - Avatar com silhueta atlética (masculina/feminina) que enche de água conforme o progresso. O nível sobe em ~0,5 s e a superfície da água balança como num copo.
 - Histórico de hoje, ontem, últimos 7 dias, semana (seg–dom) e mês, com estatísticas.
@@ -173,7 +173,7 @@ model.add(500)  →  HydrationService.addDrink  →  grava no disco (só o arqui
 ### Lembretes
 
 ```
-08:30 primeira bebida → 10:00 → 11:30 → 13:00 → 14:30 …  (intervalo de 90 min)
+08:30 primeira bebida → 10:00 → 11:30 → 13:00 → 14:30 …  (intervalo de 90 min, por exemplo; o padrão é 30 min)
 ```
 
 - Antes da primeira bebida do dia, não há lembrete.

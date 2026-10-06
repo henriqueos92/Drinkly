@@ -1,19 +1,23 @@
 import SwiftUI
 import DrinklyCore
 
-/// Seletor de volume com a Digital Crown e botões −/+.
-/// Funciona em todos os tamanhos (38 mm a 49 mm) e não exige teclado.
+/// Seletor numérico com a Digital Crown e botões −/+ (volumes em ml por
+/// padrão; também usado para minutos). Funciona em todos os tamanhos
+/// (38 mm a 49 mm) e não exige teclado.
 struct VolumeCrownPicker: View {
     @Binding var volumeMl: Int
     var range: ClosedRange<Int> = UserProfile.allowedVolumeRange
     var crownStep: Int = 10
     var buttonStep: Int = 50
+    var label = "Volume"
+    var format: (Int) -> String = { VolumeFormatter.string(ml: $0) }
+    var spokenFormat: (Int) -> String = { VolumeFormatter.spoken(ml: $0) }
 
     @State private var crownValue: Double = 0
 
     var body: some View {
         VStack(spacing: 6) {
-            Text(VolumeFormatter.string(ml: volumeMl))
+            Text(format(volumeMl))
                 .font(Theme.rounded(.title2))
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
@@ -28,8 +32,8 @@ struct VolumeCrownPicker: View {
                                       sensitivity: .medium,
                                       isContinuous: false,
                                       isHapticFeedbackEnabled: true)
-                .accessibilityLabel("Volume")
-                .accessibilityValue(VolumeFormatter.spoken(ml: volumeMl))
+                .accessibilityLabel(label)
+                .accessibilityValue(spokenFormat(volumeMl))
                 .accessibilityAdjustableAction { direction in
                     switch direction {
                     case .increment: step(by: buttonStep)
@@ -41,13 +45,18 @@ struct VolumeCrownPicker: View {
             HStack(spacing: 6) {
                 Button { step(by: -buttonStep) } label: { Image(systemName: "minus") }
                     .buttonStyle(BigButtonStyle())
-                    .accessibilityLabel("Diminuir \(buttonStep) mililitros")
+                    .accessibilityLabel("Diminuir \(spokenFormat(buttonStep))")
                 Button { step(by: buttonStep) } label: { Image(systemName: "plus") }
                     .buttonStyle(BigButtonStyle())
-                    .accessibilityLabel("Aumentar \(buttonStep) mililitros")
+                    .accessibilityLabel("Aumentar \(spokenFormat(buttonStep))")
             }
         }
         .onAppear { crownValue = Double(volumeMl) }
+        .onChange(of: volumeMl) { newValue in
+            // Mantém a Crown em sincronia quando o valor muda por fora
+            // (ex.: botões de intervalo pré-definido).
+            if Int(crownValue.rounded()) != newValue { crownValue = Double(newValue) }
+        }
         .onChange(of: crownValue) { newValue in
             let snapped = Int((newValue / Double(crownStep)).rounded()) * crownStep
             let clamped = min(max(snapped, range.lowerBound), range.upperBound)

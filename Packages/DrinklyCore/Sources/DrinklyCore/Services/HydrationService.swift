@@ -81,7 +81,7 @@ public final class HydrationService {
     /// Dias anteriores continuam avaliados com a meta da época.
     public func saveProfile(_ profile: UserProfile) throws {
         var profile = profile
-        profile.quickAmounts = UserProfile.sanitizedQuickAmounts(profile.quickAmounts)
+        profile.shortcuts = UserProfile.sanitizedShortcuts(profile.shortcuts)
         try store.saveProfile(profile)
         var goals = try store.loadGoalHistory()
         goals.setGoal(goalCalculator.effectiveGoalMl(for: profile), from: today)
@@ -120,6 +120,22 @@ public final class HydrationService {
         try store.insert(record)
         notify(.recordAdded(record))
         return record
+    }
+
+    /// Guarda a bebida como atalho da tela inicial (ex.: registrada por
+    /// "Outras bebidas"). Não faz nada se já existir ou se a lista estiver cheia.
+    @discardableResult
+    public func rememberShortcut(_ shortcut: DrinkShortcut) throws -> Bool {
+        guard var profile = profile(), profile.rememberShortcut(shortcut) else { return false }
+        try saveProfile(profile)
+        return true
+    }
+
+    /// Remove um atalho da tela inicial.
+    public func removeShortcut(_ shortcut: DrinkShortcut) throws {
+        guard var profile = profile(), profile.shortcuts.contains(shortcut) else { return }
+        profile.shortcuts.removeAll { $0 == shortcut }
+        try saveProfile(profile)
     }
 
     /// Edita volume, tipo e/ou horário de um registro existente.

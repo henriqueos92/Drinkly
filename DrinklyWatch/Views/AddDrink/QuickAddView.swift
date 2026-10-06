@@ -24,9 +24,9 @@ struct QuickAddView: View {
                 }
                 .accessibilityElement(children: .combine)
 
-                ForEach(model.quickAmounts, id: \.self) { amount in
-                    QuickAddButton(volumeMl: amount) {
-                        model.add(volumeMl: amount)
+                ForEach(model.shortcuts) { shortcut in
+                    QuickAddButton(volumeMl: shortcut.volumeMl, beverage: shortcut.type, compact: true) {
+                        model.add(shortcut)
                         model.isQuickAddPresented = false
                     }
                 }

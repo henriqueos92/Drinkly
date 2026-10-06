@@ -16,7 +16,7 @@ public struct ReminderSettings: Codable, Hashable, Sendable {
     public var stopWhenGoalReached: Bool
 
     public init(isEnabled: Bool = true,
-                intervalMinutes: Int = 90,
+                intervalMinutes: Int = 30,
                 startMinuteOfDay: Int = 8 * 60,
                 endMinuteOfDay: Int = 22 * 60,
                 stopWhenGoalReached: Bool = true) {

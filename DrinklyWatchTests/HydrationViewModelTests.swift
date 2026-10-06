@@ -43,6 +43,29 @@ final class HydrationViewModelTests: XCTestCase {
         XCTAssertEqual(model.today.status, .empty)
     }
 
+    func testOtherBeverageBecomesShortcut() throws {
+        let model = makeModel()
+        model.add(volumeMl: 300, type: .coconutWater, rememberShortcut: true)
+        let coconut = DrinkShortcut(type: .coconutWater, volumeMl: 300)
+        XCTAssertEqual(model.shortcuts.last, coconut)
+        XCTAssertEqual(model.today.consumedMl, 300)
+
+        // Usar o atalho registra de novo, sem duplicar o atalho.
+        model.add(coconut)
+        XCTAssertEqual(model.today.consumedMl, 600)
+        XCTAssertEqual(model.shortcuts.filter { $0 == coconut }.count, 1)
+
+        model.removeShortcut(coconut)
+        XCTAssertFalse(model.shortcuts.contains(coconut))
+    }
+
+    func testQuickAddFromDashboardDoesNotCreateShortcut() {
+        let model = makeModel()
+        let before = model.shortcuts
+        model.add(volumeMl: 330)
+        XCTAssertEqual(model.shortcuts, before)
+    }
+
     func testInvalidVolumeShowsError() {
         let model = makeModel()
         model.add(volumeMl: 0)

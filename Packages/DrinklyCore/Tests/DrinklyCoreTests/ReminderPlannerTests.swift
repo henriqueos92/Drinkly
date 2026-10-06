@@ -76,6 +76,14 @@ final class ReminderPlannerTests: XCTestCase {
         }
     }
 
+    func testDefaultIntervalIsThirtyMinutes() {
+        XCTAssertEqual(ReminderSettings.default.intervalMinutes, 30)
+        let drink = TestCalendar.date(2026, 10, 1, 14, 0)
+        let plan = planner.plan(for: context(now: drink, lastDrink: drink, settings: .default), calendar: calendar)
+        XCTAssertEqual(plan.first?.fireDate, TestCalendar.date(2026, 10, 1, 14, 30))
+        XCTAssertEqual(plan.count, 16) // 14:30 ... 22:00
+    }
+
     func testDisabledOrInvalidWindowProducesNothing() {
         let drink = TestCalendar.date(2026, 10, 1, 9, 0)
         let disabled = ReminderSettings(isEnabled: false)
@@ -127,6 +135,6 @@ final class ReminderPlannerTests: XCTestCase {
         clock.now = TestCalendar.date(2026, 10, 1, 8, 30)
         try service.addDrink(volumeMl: 500)
         let next = planner.nextReminderDate(for: try XCTUnwrap(service.reminderContext()), calendar: calendar)
-        XCTAssertEqual(next, TestCalendar.date(2026, 10, 1, 10, 0))
+        XCTAssertEqual(next, TestCalendar.date(2026, 10, 1, 9, 0), "Padrão: a cada 30 minutos")
     }
 }

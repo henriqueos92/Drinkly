@@ -9,8 +9,9 @@ import DrinklyCore
 /// │ avatar │ 1.250 / 3.950 ml│
 /// │ (fixo) │ Faltam 2.700 ml │
 /// │        │ [💧 +300 ml]    │  ← coluna rola com a Digital Crown
-/// │        │ [💧 +500 ml]    │
+/// │        │ [🥥 +300 ml]    │  ← atalhos criados em "Outras bebidas"
 /// │        │ [Outras]        │
+/// │        │ [Editar atalhos]│
 /// └──────────────────────────┘
 /// ```
 /// O avatar fica sempre visível à esquerda; os botões ficam à direita.
@@ -76,9 +77,9 @@ struct DashboardView: View {
 
     @ViewBuilder
     private func actions(compact: Bool) -> some View {
-        ForEach(model.quickAmounts, id: \.self) { amount in
-            QuickAddButton(volumeMl: amount, compact: compact) {
-                model.add(volumeMl: amount)
+        ForEach(model.shortcuts) { shortcut in
+            QuickAddButton(volumeMl: shortcut.volumeMl, beverage: shortcut.type, compact: compact) {
+                model.add(shortcut)
             }
         }
 
@@ -90,6 +91,15 @@ struct DashboardView: View {
         .buttonStyle(BigButtonStyle(background: Color.white.opacity(0.14), minHeight: compact ? 36 : 44))
         .accessibilityLabel("Outras bebidas")
         .accessibilityIdentifier("otherDrinks")
+
+        NavigationLink(destination: ShortcutsSettingsView()) {
+            Label("Editar atalhos", systemImage: "pencil")
+                .font(Theme.rounded(.footnote))
+        }
+        .buttonStyle(BigButtonStyle(background: Color.white.opacity(0.08),
+                                    foreground: Theme.secondaryText,
+                                    minHeight: compact ? 30 : 38))
+        .accessibilityIdentifier("editShortcuts")
 
         if let record = model.undoableRecord {
             Button {

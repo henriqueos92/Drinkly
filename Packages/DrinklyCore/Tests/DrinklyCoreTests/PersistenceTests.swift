@@ -96,6 +96,24 @@ final class PersistenceTests: XCTestCase {
         XCTAssertEqual(records.first?.revision, 1)
     }
 
+    func testLegacyProfileMigratesQuickAmountsToShortcuts() throws {
+        let json = """
+        {"id":"8D1B2C3A-0000-4000-8000-000000000002","gender":"male","heightCm":178,"weightKg":113,
+         "ageYears":34,"quickAmounts":[500,300],"createdAt":"2026-10-01T11:30:00Z"}
+        """
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let profile = try decoder.decode(UserProfile.self, from: Data(json.utf8))
+        XCTAssertEqual(profile.shortcuts, [.water(300), .water(500)])
+        XCTAssertEqual(profile.reminders, .default)
+
+        // Regravado no formato novo e lido de volta.
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        let roundTrip = try decoder.decode(UserProfile.self, from: try encoder.encode(profile))
+        XCTAssertEqual(roundTrip, profile)
+    }
+
     func testManyYearsOfHistory() throws {
         let store = makeStore()
         let service = makeService(store: store, clock: TestClock(TestCalendar.date(2026, 10, 1, 12, 0)))

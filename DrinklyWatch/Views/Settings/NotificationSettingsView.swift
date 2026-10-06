@@ -1,11 +1,11 @@
 import SwiftUI
 import DrinklyCore
 
-/// Lembretes: ativar, intervalo (30/60/90/120/personalizado), janela de horário.
+/// Lembretes: ativar, intervalo (atalhos 30/60/90/120 ou qualquer valor de
+/// 15 a 360 min pela Digital Crown) e janela de horário.
 struct NotificationSettingsView: View {
     @EnvironmentObject private var model: HydrationViewModel
     @State private var settings: ReminderSettings
-    @State private var usesCustomInterval: Bool
 
     private static let timeFormatter: DateFormatter = {
         let f = DateFormatter()
@@ -16,19 +16,6 @@ struct NotificationSettingsView: View {
 
     init(profile: UserProfile) {
         _settings = State(initialValue: profile.reminders)
-        _usesCustomInterval = State(initialValue: !ReminderSettings.presetIntervals.contains(profile.reminders.intervalMinutes))
-    }
-
-    private var intervalSelection: Binding<Int> {
-        Binding(get: { usesCustomInterval ? -1 : settings.intervalMinutes },
-                set: { value in
-                    if value == -1 {
-                        usesCustomInterval = true
-                    } else {
-                        usesCustomInterval = false
-                        settings.intervalMinutes = value
-                    }
-                })
     }
 
     var body: some View {
@@ -38,17 +25,38 @@ struct NotificationSettingsView: View {
 
             if settings.isEnabled {
                 Section {
-                    Picker("Intervalo", selection: intervalSelection) {
-                        ForEach(ReminderSettings.presetIntervals, id: \.self) { minutes in
-                            Text("\(minutes) min").tag(minutes)
+                    // Qualquer valor de 15 a 360 min, de 5 em 5, pela Crown ou −/+.
+                    VolumeCrownPicker(volumeMl: $settings.intervalMinutes,
+                                      range: ReminderSettings.allowedIntervalRange,
+                                      crownStep: 5,
+                                      buttonStep: 5,
+                                      label: "Intervalo dos lembretes",
+                                      format: { "\($0) min" },
+                                      spokenFormat: { "\($0) minutos" })
+                        .accessibilityIdentifier("reminderInterval")
+                } header: {
+                    Text("Lembrar a cada")
+                }
+
+                Section {
+                    ForEach(ReminderSettings.presetIntervals, id: \.self) { minutes in
+                        Button {
+                            settings.intervalMinutes = minutes
+                        } label: {
+                            HStack {
+                                Text(minutes == 30 ? "30 min (meia hora)" : "\(minutes) min")
+                                Spacer()
+                                if settings.intervalMinutes == minutes {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(Theme.water)
+                                }
+                            }
                         }
-                        Text("Personalizado").tag(-1)
-                    }
-                    if usesCustomInterval {
-                        IntervalMinutesPicker(minutes: $settings.intervalMinutes)
+                        .accessibilityAddTraits(settings.intervalMinutes == minutes ? .isSelected : [])
+                        .accessibilityIdentifier("interval-\(minutes)")
                     }
                 } header: {
-                    Text("Intervalo")
+                    Text("Atalhos")
                 }
 
                 Section {
@@ -89,16 +97,5 @@ struct NotificationSettingsView: View {
         guard var profile = model.profile, profile.reminders != settings, settings.hasValidWindow else { return }
         profile.reminders = settings
         model.saveProfile(profile)
-    }
-}
-
-/// Seleção livre do intervalo (15–360 min) com a Digital Crown.
-private struct IntervalMinutesPicker: View {
-    @Binding var minutes: Int
-
-    var body: some View {
-        NumberWheelPicker(title: "Minutos", value: $minutes,
-                          range: ReminderSettings.allowedIntervalRange.lowerBound...ReminderSettings.allowedIntervalRange.upperBound,
-                          step: 5, unit: "min")
     }
 }

@@ -85,5 +85,12 @@ final class DrinklyUITests: XCTestCase {
 
         expectation(for: NSPredicate(format: "label == %@", "12%"), evaluatedWith: app.staticTexts["percentage"])
         waitForExpectations(timeout: 3)
+
+        // A bebida vira um atalho na tela inicial, que registra com um toque.
+        let shortcut = app.buttons["quickAdd-juice-300"]
+        XCTAssertTrue(shortcut.waitForExistence(timeout: 3))
+        shortcut.tap()
+        expectation(for: NSPredicate(format: "label == %@", "24%"), evaluatedWith: app.staticTexts["percentage"])
+        waitForExpectations(timeout: 3)
     }
 }

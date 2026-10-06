@@ -14,8 +14,10 @@ struct SettingsView: View {
                 NavigationLink(destination: GoalSettingsView(profile: profile)) {
                     SettingsRow(title: "Meta", value: VolumeFormatter.string(ml: model.currentGoalMl), symbol: "target")
                 }
-                NavigationLink(destination: QuickAmountsSettingsView(profile: profile)) {
-                    SettingsRow(title: "Bebidas rápidas", value: profile.quickAmounts.map(String.init).joined(separator: " · "), symbol: "bolt.fill")
+                NavigationLink(destination: ShortcutsSettingsView()) {
+                    SettingsRow(title: "Atalhos de bebidas",
+                                value: "\(profile.shortcuts.count) atalho\(profile.shortcuts.count == 1 ? "" : "s")",
+                                symbol: "bolt.fill")
                 }
                 NavigationLink(destination: NotificationSettingsView(profile: profile)) {
                     SettingsRow(title: "Notificações",

@@ -2,6 +2,7 @@ import SwiftUI
 import DrinklyCore
 
 /// "Adicionar bebida": escolha do tipo → volume. Dois toques no total.
+/// A bebida registrada aqui vira um atalho na tela inicial.
 struct AddDrinkView: View {
     @EnvironmentObject private var model: HydrationViewModel
     let onFinish: () -> Void
@@ -36,9 +37,9 @@ struct VolumeSelectionView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 6) {
-                ForEach(model.quickAmounts, id: \.self) { amount in
-                    QuickAddButton(volumeMl: amount, type: type.spokenLabel, identifierPrefix: "volume") {
-                        model.add(volumeMl: amount, type: type)
+                ForEach(model.volumePresets, id: \.self) { amount in
+                    QuickAddButton(volumeMl: amount, beverage: type, identifierPrefix: "volume") {
+                        model.add(volumeMl: amount, type: type, rememberShortcut: true)
                         onFinish()
                     }
                 }
@@ -66,7 +67,7 @@ struct CustomVolumeView: View {
             VStack(spacing: 8) {
                 VolumeCrownPicker(volumeMl: $volumeMl)
                 Button {
-                    model.add(volumeMl: volumeMl, type: type)
+                    model.add(volumeMl: volumeMl, type: type, rememberShortcut: true)
                     onFinish()
                 } label: {
                     Label("Adicionar", systemImage: "plus.circle.fill")

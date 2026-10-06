@@ -1,4 +1,5 @@
 import SwiftUI
+import DrinklyCore
 
 /// Botão grande e de alto contraste para ações rápidas.
 struct BigButtonStyle: ButtonStyle {
@@ -23,38 +24,45 @@ struct BigButtonStyle: ButtonStyle {
     }
 }
 
-/// Botão "+500 ml" usado no início, no registro rápido e nos intents.
+/// Botão de atalho ("+500 ml", "🥥 +300 ml Água de coco") usado na tela
+/// inicial, no registro rápido e na escolha de volume.
 struct QuickAddButton: View {
     let volumeMl: Int
-    var type: BeverageTypeLabel = .water
+    var beverage: BeverageType = .water
     var identifierPrefix = "quickAdd"
-    /// Versão mais baixa, com ícone de gota, para a coluna da tela inicial.
+    /// Versão mais baixa, com ícone da bebida, para a coluna da tela inicial.
     var compact = false
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 2) {
+            HStack(spacing: 4) {
                 if compact {
-                    Image(systemName: "drop.fill")
+                    Image(systemName: beverage.symbolName)
                         .font(.system(size: 11, weight: .bold))
-                        .foregroundColor(Theme.water)
-                        .padding(.trailing, 2)
+                        .foregroundColor(beverage.tint)
                 }
-                Text("+\(volumeMl)")
-                Text("ml")
-                    .font(Theme.rounded(.footnote, weight: .medium))
-                    .foregroundColor(Theme.secondaryText)
+                VStack(alignment: compact ? .leading : .center, spacing: 0) {
+                    HStack(spacing: 2) {
+                        Text("+\(volumeMl)")
+                        Text("ml")
+                            .font(Theme.rounded(.footnote, weight: .medium))
+                            .foregroundColor(Theme.secondaryText)
+                    }
+                    if compact && beverage != .water {
+                        Text(beverage.displayName)
+                            .font(Theme.rounded(.caption2, weight: .medium))
+                            .foregroundColor(Theme.secondaryText)
+                    }
+                }
             }
         }
         .buttonStyle(BigButtonStyle(minHeight: compact ? 36 : 44))
-        .accessibilityLabel("Adicionar \(volumeMl) mililitros de \(type.spokenName)")
-        .accessibilityIdentifier("\(identifierPrefix)-\(volumeMl)")
+        .accessibilityLabel("Adicionar \(volumeMl) mililitros de \(beverage.displayName.lowercased())")
+        .accessibilityIdentifier(identifier)
     }
-}
 
-/// Nome falado da bebida para o VoiceOver.
-struct BeverageTypeLabel {
-    let spokenName: String
-    static let water = BeverageTypeLabel(spokenName: "água")
+    private var identifier: String {
+        beverage == .water ? "\(identifierPrefix)-\(volumeMl)" : "\(identifierPrefix)-\(beverage.rawValue)-\(volumeMl)"
+    }
 }

@@ -1,72 +1,88 @@
 import SwiftUI
 import DrinklyCore
 
-/// Escolha dos volumes dos botões rápidos (até 6) e volumes personalizados.
-struct QuickAmountsSettingsView: View {
+/// "Editar atalhos": lista dos atalhos da tela inicial (água e outras
+/// bebidas), com exclusão por deslize e criação de novos atalhos.
+///
+/// Atalhos também são criados automaticamente ao registrar uma bebida por
+/// "Outras bebidas".
+struct ShortcutsSettingsView: View {
     @EnvironmentObject private var model: HydrationViewModel
-    @State private var selected: Set<Int>
-    @State private var customVolume = 330
-    @State private var extraOptions: [Int] = []
-
-    private static let presets = [100, 150, 200, 250, 300, 330, 400, 500, 600, 750, 1000]
-
-    init(profile: UserProfile) {
-        _selected = State(initialValue: Set(profile.quickAmounts))
-    }
-
-    private var options: [Int] {
-        Array(Set(Self.presets + extraOptions + Array(selected))).sorted()
-    }
+    @State private var newType: BeverageType = .water
+    @State private var newVolume = 300
+    @State private var feedback: String?
 
     var body: some View {
+        let shortcuts = model.shortcuts
         List {
             Section {
-                ForEach(options, id: \.self) { amount in
-                    Button {
-                        toggle(amount)
-                    } label: {
-                        HStack {
-                            Text(VolumeFormatter.string(ml: amount))
-                            Spacer()
-                            if selected.contains(amount) {
-                                Image(systemName: "checkmark.circle.fill").foregroundColor(Theme.water)
-                            }
-                        }
-                    }
-                    .accessibilityAddTraits(selected.contains(amount) ? .isSelected : [])
+                if shortcuts.isEmpty {
+                    Text("Nenhum atalho. Registre uma bebida em \"Outras\" ou crie um abaixo.")
+                        .font(.footnote)
+                        .foregroundColor(Theme.secondaryText)
+                }
+                ForEach(shortcuts) { shortcut in
+                    ShortcutRow(shortcut: shortcut)
+                }
+                .onDelete { offsets in
+                    offsets.map { shortcuts[$0] }.forEach(model.removeShortcut)
                 }
             } header: {
-                Text("Até \(UserProfile.maxQuickAmounts) botões")
+                Text("Atalhos (\(shortcuts.count)/\(UserProfile.maxShortcuts))")
+            } footer: {
+                Text("Deslize um atalho para a esquerda para excluir.")
             }
 
             Section {
-                VolumeCrownPicker(volumeMl: $customVolume)
-                Button("Adicionar volume") {
-                    extraOptions.append(customVolume)
-                    if selected.count < UserProfile.maxQuickAmounts { selected.insert(customVolume) }
-                    save()
+                Picker("Bebida", selection: $newType) {
+                    ForEach(BeverageType.allCases) { type in
+                        Text(type.displayName).tag(type)
+                    }
+                }
+                VolumeCrownPicker(volumeMl: $newVolume)
+                Button {
+                    let shortcut = DrinkShortcut(type: newType, volumeMl: newVolume)
+                    if model.addShortcut(shortcut) {
+                        feedback = nil
+                    } else if shortcuts.contains(shortcut) {
+                        feedback = "Esse atalho já existe."
+                    } else {
+                        feedback = "Limite de \(UserProfile.maxShortcuts) atalhos. Exclua um para adicionar outro."
+                    }
+                } label: {
+                    Label("Adicionar atalho", systemImage: "plus.circle.fill")
+                }
+                .accessibilityIdentifier("addShortcut")
+                if let feedback = feedback {
+                    Text(feedback)
+                        .font(.footnote)
+                        .foregroundColor(.orange)
                 }
             } header: {
-                Text("Personalizar")
+                Text("Novo atalho")
             }
         }
-        .navigationTitle("Bebidas rápidas")
+        .navigationTitle("Atalhos")
     }
+}
 
-    private func toggle(_ amount: Int) {
-        if selected.contains(amount) {
-            guard selected.count > 1 else { return }
-            selected.remove(amount)
-        } else {
-            guard selected.count < UserProfile.maxQuickAmounts else { return }
-            selected.insert(amount)
+private struct ShortcutRow: View {
+    let shortcut: DrinkShortcut
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Image(systemName: shortcut.type.symbolName)
+                .foregroundColor(shortcut.type.tint)
+                .frame(width: 18)
+            Text(shortcut.type.displayName)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+            Spacer(minLength: 4)
+            Text(VolumeFormatter.string(ml: shortcut.volumeMl))
+                .font(Theme.rounded(.footnote))
         }
-        save()
-    }
-
-    private func save() {
-        guard var profile = model.profile else { return }
-        profile.quickAmounts = Array(selected)
-        model.saveProfile(profile)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(shortcut.type.displayName), \(VolumeFormatter.spoken(ml: shortcut.volumeMl))")
+        .accessibilityHint("Deslize para excluir")
     }
 }

@@ -161,13 +161,39 @@ final class HydrationServiceTests: XCTestCase {
         }
     }
 
-    func testQuickAmountsAreSanitizedAndSaved() throws {
+    func testShortcutsAreSanitizedAndSaved() throws {
         var profile = try XCTUnwrap(service.profile())
-        profile.quickAmounts = [750, 200, 300, 200, 0, 500]
+        profile.shortcuts = [.water(750), .water(200), DrinkShortcut(type: .juice, volumeMl: 300),
+                             .water(200), .water(0), .water(500)]
         try service.saveProfile(profile)
-        XCTAssertEqual(service.profile()?.quickAmounts, [200, 300, 500, 750])
-        XCTAssertEqual(UserProfile.sanitizedQuickAmounts([]), UserProfile.defaultQuickAmounts)
-        XCTAssertEqual(UserProfile.sanitizedQuickAmounts([100, 200, 300, 500, 750, 1000, 1500]).count, UserProfile.maxQuickAmounts)
+        XCTAssertEqual(service.profile()?.shortcuts,
+                       [.water(750), .water(200), DrinkShortcut(type: .juice, volumeMl: 300), .water(500)])
+        XCTAssertEqual(service.profile()?.quickAmounts, [750, 200, 500], "Só os atalhos de água")
+        let many = (1...12).map { DrinkShortcut.water($0 * 100) }
+        XCTAssertEqual(UserProfile.sanitizedShortcuts(many).count, UserProfile.maxShortcuts)
+    }
+
+    func testOtherBeverageBecomesShortcutAndCanBeRemoved() throws {
+        let coconut = DrinkShortcut(type: .coconutWater, volumeMl: 300)
+        XCTAssertTrue(try service.rememberShortcut(coconut))
+        XCTAssertFalse(try service.rememberShortcut(coconut), "Não duplica")
+        XCTAssertEqual(service.profile()?.shortcuts.last, coconut)
+
+        try service.removeShortcut(coconut)
+        XCTAssertFalse(service.profile()?.shortcuts.contains(coconut) ?? true)
+
+        // Também é possível remover atalhos de água, inclusive todos.
+        for shortcut in service.profile()?.shortcuts ?? [] {
+            try service.removeShortcut(shortcut)
+        }
+        XCTAssertEqual(service.profile()?.shortcuts, [])
+    }
+
+    func testShortcutListIsLimited() throws {
+        for volume in stride(from: 100, through: 1500, by: 100) {
+            try service.rememberShortcut(DrinkShortcut(type: .tea, volumeMl: volume))
+        }
+        XCTAssertEqual(service.profile()?.shortcuts.count, UserProfile.maxShortcuts)
     }
 
     func testDeleteAllDataReturnsToOnboarding() throws {
