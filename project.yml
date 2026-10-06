@@ -14,8 +14,8 @@ options:
 settings:
   base:
     # Altere estes dois valores para a sua conta Apple Developer.
-    BUNDLE_ID_PREFIX: com.drinkly
-    DEVELOPMENT_TEAM: ""
+    BUNDLE_ID_PREFIX: com.henriqueoliveira
+    DEVELOPMENT_TEAM: 827FN94STV
     APP_GROUP_IDENTIFIER: group.$(BUNDLE_ID_PREFIX).hydration
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
